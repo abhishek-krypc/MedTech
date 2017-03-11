@@ -16,7 +16,7 @@ import com.krypc.hl.pr.protoapis.HyperledgerStaticProperty;
 public class GeneralUtils {
 
 	private Properties prop = new Properties();
-	public ChainCodeResponse chainCodeResponse;
+	public ChainCodeResponse chainCodeRes;
 	private GeneralUtils(){
     	init();
     }
@@ -29,7 +29,7 @@ public class GeneralUtils {
 			prop.load(input);
 			chaincodename = prop.getProperty("chaincodename");
 			chaincodeid = prop.getProperty("chaincodeid");
-			chainCodeResponse = new ChainCodeResponse(chaincodeid, chaincodename,null , null);
+			chainCodeRes = new ChainCodeResponse(chaincodeid, chaincodename,null , null);
 		} catch (Exception e) {
 			 e.printStackTrace();
 		}finally{
@@ -46,10 +46,10 @@ public class GeneralUtils {
 		OutputStream output = null;
 		try {
 			output = new FileOutputStream(HyperledgerStaticProperty.path_chaincode_id);
-            prop.setProperty("chaincodename", chainCodeResponse.getChainCodeID());
+            prop.setProperty("chaincodename", chainCodeResponse.getTransactionID());
             prop.setProperty("chaincodeid", chainCodeResponse.getTransactionID());
+            chainCodeRes = new ChainCodeResponse(chainCodeResponse.getChainCodeID(), chainCodeResponse.getTransactionID(),null , null);
             prop.store(output, null);
-            chainCodeResponse = new ChainCodeResponse(chainCodeResponse.getChainCodeID(), chainCodeResponse.getTransactionID(),null , null);
         } catch (IOException exception) {
             exception.printStackTrace();
         } finally{
@@ -64,10 +64,11 @@ public class GeneralUtils {
 	}
 	
 	public ChainCodeResponse  getChaincodeName(){
-		return chainCodeResponse;
+		return chainCodeRes;
 	}
 	
 	public boolean verifychaincode(){
 		return (getChaincodeName()!=null);
 	}
 }
+

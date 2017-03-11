@@ -46,9 +46,9 @@ public class GeneralUtils {
 		OutputStream output = null;
 		try {
 			output = new FileOutputStream(HyperledgerStaticProperty.path_chaincode_id);
-            prop.setProperty("chaincodename", chainCodeResponse.getChainCodeID());
+            prop.setProperty("chaincodename", chainCodeResponse.getTransactionID());
             prop.setProperty("chaincodeid", chainCodeResponse.getTransactionID());
-            chainCodeRes = new ChainCodeResponse(chainCodeResponse.getChainCodeID(), chainCodeResponse.getTransactionID(),null , null);
+            chainCodeRes = new ChainCodeResponse(chainCodeResponse.getTransactionID(), chainCodeResponse.getTransactionID(),null , null);
             prop.store(output, null);
         } catch (IOException exception) {
             exception.printStackTrace();
