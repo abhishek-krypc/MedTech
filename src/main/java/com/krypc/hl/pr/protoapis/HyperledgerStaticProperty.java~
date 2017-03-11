@@ -55,7 +55,7 @@ public class HyperledgerStaticProperty {
 				"127.0.0.1", 
 				7053, 
 				System.getProperty("user.home")+"/test.properties",     
-                                System.getProperty("user.home")+"/config.properties"
+                System.getProperty("user.home")+"/config.properties"
 				);
 
 

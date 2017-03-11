@@ -19,6 +19,7 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
 	$scope.generateHash = function(){
+		
 	
 //function generateHash() {
 	
@@ -30,6 +31,7 @@ app.controller('myCtrl', function($scope) {
 	data.doctorLicense = $('#form_doctorLicense').val();
 	if(data.patientSSN!="" && data.lastName!="" && data.dateOfBirth!="" && data.dateOfVisit!="" && data.doctorLicense!=""){
 		$(".errorMessage").text("");
+		
 			$.ajax({							
 				type : "POST",
 				url : "${pageContext.request.contextPath}/generateHash",
@@ -44,10 +46,11 @@ app.controller('myCtrl', function($scope) {
 						$("#submitRecord").show();
 						$("#generateHash").hide();
 			   			//$('input[class=form-control]').val('');
+			    	    
 			   		}else if(result.errorDetails != null){
-			   			$("#errorMessage").text(result.errorDetails);
+			   			
 					}else{
-						$("#errorMessage").text(result.errorMessage);	
+						
 					}
 				}
 			});

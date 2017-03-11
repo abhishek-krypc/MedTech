@@ -86,7 +86,7 @@ function Search(){
                             	document.getElementById("dataTabletbody").innerHTML+="<tr><td id='patientSSN"+i+"'>"+obj[i].PatientSSN+"</td><td id='hash"+i+"' data-toggle='tooltip' title='"+obj[i].Hash+"' style='word-break: break-all;color:green;cursor:pointer'>"+obj[i].Hash.substring(0,6)+"</td><td id='doctorId"+i+"'>"+obj[i].DoctorId+"</td><td id='recordId"+i+"'>"+obj[i].ReportId+"</td><td id='ispaid"+i+"'>"+obj[i].PaymentStatus+"</td><td><input type='hidden' id='isApproved"+i+"' value='"+obj[i].ApproveReport+"'>"+obj[i].ApproveReport+"</td><td></td></tr>";
                             }
                             if(obj[i].PaymentStatus === 'PENDING'){
-                            	$("#ispaid"+i).html("<select id='ispaidVal"+i+"'><option value='0'>Select</option><option value='1'>Approve</option><option value='2'>Reject</option></select>");
+                            	$("#ispaid"+i).html("<select id='ispaidVal"+i+"'><option value='0'>Select</option><option value='1'>Open</option><option value='2'>Restricted</option></select>");
                             }
                             }
                        }else if(result.errorDetails != null){
@@ -208,4 +208,3 @@ $(document).ready(function() {
 </script>
 
 </body></html>
-
